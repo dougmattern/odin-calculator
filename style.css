@@ -21,20 +21,21 @@ body {
 }
 
 #row1 >*, #row2 >*, #row3>*, #row4>* {
-    font-size: 3rem;
-    padding: 0.1em 0.4em;
+    font-size: 2rem;
+    padding: 0.1em;
 }
 
-#seven, #eight, #nine, #four, #five, #six, #one, #two, #three,
+#seven, #eight, #nine, #clear, #delete, #four, #five, #six, #one, #two, #three,
      #plus, #minus, #multiply, #division {
         width: 20%;
+        
     }
 
 #zero, #decimal {
     width: 30%;
 }
 
-#clear, #equals {
+#equals {
     width: 40%;
 }
 
@@ -50,4 +51,9 @@ margin: 0.2em;
     background-color: lightskyblue;
     border-radius: 4px;
     margin: 1em;
+
+}
+
+#numbers {
+    font-size: 3rem;
 }
