@@ -8,7 +8,16 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-<body>
+<body class = 'light-theme'>
+    <div class = 'header'>
+        <div class = 'darkmode'>dark mode</div>
+        <label class = "switch">
+            <div class = 'toggle'> 
+                <input type = "checkbox"/>
+                <span class = "slider round"></span>
+            </div>
+        </label>
+    </div>
     <div class = 'calculator'>
         <div class = 'screen'>
                 <div id = 'numbers'></div>
@@ -20,8 +29,9 @@
                 <div id = 'iconmultiply'>x</div>
              </div>   
         </div>
-        <div id = 'buttons'>
-                <div id = 'row1'>
+        
+        <div class = 'buttons'>
+                <div class = 'row1'>
                     <button id = 'seven'>7</button>
                     <button id = 'eight'>8</button>
                     <button id = 'nine'>9</button>       
@@ -29,7 +39,7 @@
                     <button id = 'del'>Del</button>
                 </div>
                     
-                <div id = 'row2'>
+                <div class = 'row2'>
                     <button id = 'four'>4</button>
                     <button id = 'five'>5</button>
                     <button id = 'six'>6</button>
@@ -37,7 +47,7 @@
                     <button id = 'minus'>&ndash;</button>
                 </div>  
                     
-                <div id = 'row3'>
+                <div class = 'row3'>
                     <button id = 'one'>1</button>
                     <button id = 'two'>2</button>
                     <button id = 'three'>3</button>
@@ -45,7 +55,7 @@
                     <button id = 'division'>/</button>
                 </div>
                  
-                <div id = 'row4'>
+                <div class = 'row4'>
                     <button id = 'zero'>0</button>
                     <button id = 'decimal'>.</button>
                     <button id = 'equals'>=</button>

@@ -1,5 +1,5 @@
 // calculator
-// TODO early = sign entry, divide by zero
+// TODO equal sign early press
 // button constants
 
 const zero = document.querySelector('#zero');
@@ -28,6 +28,14 @@ let numberDisplay = '0';
 let numberMemory = '0';
 let currentOperator;
 let newNumber = '0';
+
+// dark mode
+
+const themeSwitch = document.querySelector('input');
+
+themeSwitch.addEventListener('change', () => {
+  document.body.classList.toggle('dark-theme');
+});
 
 //button input functions
 
@@ -243,6 +251,8 @@ function activateIcon(operator) {
        iconmultiply.classList.remove('active')
     } else if (currentOperator == 'division') {
         icondivide.classList.remove('active')
+    } else {
+
     }
 
     if (operator == 'addition') {
@@ -272,7 +282,11 @@ function multiplication(a, b) {
 }
 
 function divide(b, a) {
+    if(b == '0') {
+        newNumber = 'Genius here / 0'
+    } else {
     newNumber = (a / b).toFixed(8)
+}
 }
 
 function operate(numberDisplay, numberMemory, operator) {
@@ -290,8 +304,6 @@ function operate(numberDisplay, numberMemory, operator) {
     }
     return newNumber
 }
-
-
 
 function update() {
     numbers.innerText = numberDisplay;
