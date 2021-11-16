@@ -1,5 +1,5 @@
 // calculator
-// TODO equal sign early press
+
 // button constants
 
 const zero = document.querySelector('#zero');
@@ -74,11 +74,16 @@ division.addEventListener('click', function() {
 })
 
 equals.addEventListener('click', function() {
-    preOperate()
-    numberDisplay = newNumber
-    numberMemory = '0'
-    activateIcon('none')
-    update()   
+    if(numberMemory != '0') {
+        preOperate()
+        numberDisplay = newNumber.toString()
+        numberMemory = '0'
+        activateIcon('none')
+        update()
+    }  
+    else {
+       numberDisplay = numberDisplay 
+    }
 })
 
 //input functions
@@ -195,7 +200,7 @@ function input0() {
 
 function inputDecimal() {
     if (numberDisplay.includes('.')) {
-        numberDisplay = numberDisplay
+        update()
     }
     else if (numberDisplay == '0') {
         numberDisplay = '0.';
@@ -270,7 +275,7 @@ function activateIcon(operator) {
 //math functions
 
 function add(a, b) {
-    newNumber = a + b 
+    newNumber = a + b
 }
 
 function subtract(b, a) {
@@ -278,14 +283,14 @@ function subtract(b, a) {
 }
 
 function multiplication(a, b) {
-    newNumber = a * b
+    newNumber = +(a * b).toFixed(6)
 }
 
 function divide(b, a) {
     if(b == '0') {
         newNumber = 'Genius here / 0'
     } else {
-    newNumber = (a / b).toFixed(8)
+    newNumber = +(a / b).toFixed(6)
 }
 }
 
