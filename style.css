@@ -1,308 +1,384 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
 
 :root {
-    --lightGray: #C8C8C8;
-    --darkGray: #333;
-    --blueGray: lightsteelblue;
-    --whiteGray: #DAE8FA;
-    --black: #222;
-    --darkBlue: #001736;
-    --screenLight: #AFE0FF;
-    --screenDark: #00548B;
-    --blackGray: #121212;
-    --darkerGray: #181818;
-    --gray: #A5A5A5;
-    --lightGradient: linear-gradient(90deg, rgb(73, 255, 73), rgb(85, 217, 250));
-    --darkGradient: linear-gradient(90deg, rgb(224, 33, 96), rgb(54, 35, 226));
+  --lightGray: #c8c8c8;
+  --darkGray: #333;
+  --blueGray: lightsteelblue;
+  --whiteGray: #dae8fa;
+  --black: #222;
+  --darkBlue: #001736;
+  --screenLight: #afe0ff;
+  --screenDark: #00548b;
+  --blackGray: #121212;
+  --darkerGray: #181818;
+  --gray: #a5a5a5;
+  --lightGrad: linear-gradient(90deg, rgb(251, 255, 0), rgb(40, 212, 255));
+  --darkGrad: linear-gradient(90deg, rgb(224, 33, 96), rgb(54, 35, 226));
 }
 
 .light-theme {
-    --fontColor: var(--black);
-    --numberButtons: var(--whiteGray);
-    --operatorButtons: var(--blueGray);
-    --bgColor: var(--lightGray);
-    --screenColor: var(--screenLight);
-    --themeSwitchColor: var(--darkGray);
-    --switchBackGround: var(--blueGray);
-    --borderColor: var(--darkerGray);
-    --hoverColor: var(--gray);
-    --gradient: var(--lightGradient);
-  }
+  --fontColor: var(--black);
+  --numberButtons: var(--whiteGray);
+  --operatorButtons: var(--blueGray);
+  --bgColor: var(--lightGray);
+  --screenColor: var(--screenLight);
+  --themeSwitchColor: var(--darkGray);
+  --switchBackGround: var(--blueGray);
+  --borderColor: var(--darkerGray);
+  --hoverColor: var(--gray);
+  --gradient: var(--lightGrad);
+}
 
 .dark-theme {
-    --fontColor: var(--lightGray);
-    --numberButtons: var(--darkerGray);
-    --operatorButtons: var(--darkBlue);
-    --bgColor: var(--blackGray);
-    --screenColor: var(--screenDark);
-    --themeSwitchColor: var(--darkerGray);
-    --switchBackGround: var(--lightGray);
-    --borderColor: var(--screenLight);
-    --hoverColor: var(--screenDark);
-    --gradient: var(--darkGradient);
-  }
+  --fontColor: var(--lightGray);
+  --numberButtons: var(--darkerGray);
+  --operatorButtons: var(--darkBlue);
+  --bgColor: var(--blackGray);
+  --screenColor: var(--screenDark);
+  --themeSwitchColor: var(--darkerGray);
+  --switchBackGround: var(--lightGray);
+  --borderColor: var(--screenLight);
+  --hoverColor: var(--screenDark);
+  --gradient: var(--darkGrad);
+}
 
 * {
-    margin: 0;
-    padding: 0;
-    color: var(--fontColor);
-    transition: background-color 500ms ease, color 500ms ease;
+  margin: 0;
+  padding: 0;
+  color: var(--fontColor);
+  transition: background-color 500ms ease, color 500ms ease;
+  cursor: default;
 }
 
 body {
-    background-color: var(--bgColor);
+  background-color: var(--bgColor);
 }
 
 .header {
-    display: flex;
-    margin-top: 8vh;
+  display: flex;
+  margin-top: 8vh;
+}
+
+/* dark mode switch */
+
+.toggle {
+  box-shadow: 0 0 0.3rem var(--lightGray);
+  position: relative;
+  z-index: 1;
+}
+
+.toggle:hover {
+  transform: scale(1.1);
 }
 
 .switch {
-    width: clamp(60px, 4rem, 7rem);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: auto;
-    cursor: pointer;
-    z-index: 2;
-  }
-
-.toggle {
-    box-shadow: 0 0 0.3rem var(--lightGray);
-    position: relative;
-    z-index: 1;
-  }
-
-.toggle:hover::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    border-radius: 50px;
-    background: var(--lightGray);
-    z-index: -1;
-    animation: pulse 2000ms infinite;
+  width: clamp(60px, 4rem, 7rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: auto;
+  z-index: 2;
 }
+
+/* pulse only in dark mode */
+
+.dark-theme .toggle:hover::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  border-radius: 50px;
+  background: var(--lightGray);
+  z-index: -1;
+  animation: pulse 2000ms infinite;
+}
+
+/* pulse animation */
 
 @keyframes pulse {
-    0% {
-        transform: scale(1);
-        opacity: 0.9;
-    }
-    100% {
-        transform: scale(1.4);
-        opacity: 0;
-    }
+  0% {
+    transform: scale(0.95);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
 }
 
+/* dark mode switch */
 
 .switch div {
-    position: relative;
-    display: block;
-    background: var(--switchBackGround);
-    width: clamp(60px, 4rem, 7rem);
-    border-radius: 50px;
-    border: 1px solid var(--borderColor);
-    padding: 0 5px;
-    box-sizing: border-box;
+  position: relative;
+  display: block;
+  background: var(--switchBackGround);
+  width: clamp(60px, 4rem, 7rem);
+  border-radius: 50px;
+  border: 2px solid var(--borderColor);
+  padding: 0 5px;
+  box-sizing: border-box;
+}
 
-  }
-  
 .switch input {
-    display: none;
-  }
+  display: none;
+}
 
 .slider {
-    background-color: var(--themeSwitchColor);
-    transition: 0.4s;
-    border-radius: 34px;
-    height: clamp(16px, 1.5rem, 2.5rem);
-    width: clamp(16px, 1.5rem, 2.5rem);
-    display: inline-block;
-    position: relative;
-    top: 2px;
-    z-index: 3;
-  }
-  
+  background-color: var(--themeSwitchColor);
+  transition: 0.4s;
+  border-radius: 34px;
+  height: clamp(16px, 1.5rem, 2.5rem);
+  width: clamp(16px, 1.5rem, 2.5rem);
+  display: inline-block;
+  position: relative;
+  top: 2px;
+  z-index: 3;
+}
+
 input:checked + .slider {
-    transform: translateX(30px);
-  }
+  transform: translateX(30px);
+}
+
+/* dark mode sign */
 
 .darkmode {
-    margin-left: auto;
-    margin-right: 1rem;
-    padding: 0.125em 0.5em 0.125em 0.5em;
-    font-family: 'Orbitron', sans-serif;
-    font-size: clamp(1rem, 2rem, 2.5rem);
-    text-shadow: 0 0 0.3em var(--lightGray);
-    position: relative;
-    border: 2px solid var(--lightGray);
-    border-radius: 20px;
-    box-shadow: 0 0 0.5rem var(--lightGray);  
-}
-   
-.darkmode:hover {
-    color: var(--blackGray);
-    background-color: var(--lightGray);
-    box-shadow: 0 0 3rem var(--lightGray);
-    transition-duration: 200ms;
+  margin-left: auto;
+  margin-right: 1rem;
+  padding: 0.125em 0.5em 0.125em 0.5em;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1rem, 2rem, 2.5rem);
+  text-shadow: 0 0 0.3em var(--lightGray);
+  position: relative;
+  border: 2px solid var(--lightGray);
+  border-radius: 20px;
+  box-shadow: 0 0 0.5rem var(--lightGray);
 }
 
+/* sign light up in dark mode */
 
+.dark-theme .darkmode:hover {
+  color: var(--blackGray);
+  background-color: var(--lightGray);
+  box-shadow: 0 0 3rem var(--lightGray);
+  transition-duration: 200ms;
+}
 
 .darkmode::before {
-    content: '';
-    position: absolute;
-    background: rgba(200, 200, 200, 0.3);
-    top: 80%;
-    left: -18%;
-    width: 170%;
-    height: 40%;
-    transform: perspective(3em) rotateX(50deg);
-    filter: blur(0.5em);
-    z-index: 1;
+  content: "";
+  position: absolute;
+  background: rgba(200, 200, 200, 0.3);
+  top: 80%;
+  left: -18%;
+  width: 170%;
+  height: 40%;
+  transform: perspective(3em) rotateX(50deg);
+  filter: blur(0.5em);
+  z-index: 1;
 }
 
+/* main body */
+
 .calculator {
-    height: 60vh;
-    max-height: 640px;
-    width: 55vh;
-    min-width: 320px;
-    max-width: 600px;
-    background-color: #333;
-    border-radius: 8px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5vh;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    box-shadow: 5px -5px 8px black;
-    z-index: -1;
+  height: 60vh;
+  max-height: 640px;
+  width: 55vh;
+  min-width: 320px;
+  max-width: 600px;
+  background-color: #333;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  box-shadow: 5px -5px 8px black;
+  z-index: -1;
 }
 
 .buttons {
-    display: flex;
-    flex-direction: column; 
-    flex: 1; 
-    margin: 0.5em;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 0.5em;
 }
 
-.row1 >*, .row2 >*, .row3>*, .row4>* {
-    font-size: 0.75rem;
-    flex: 1;
-    border: 1px solid black;
-    border-radius: 2px;
+.row1 > *,
+.row2 > *,
+.row3 > *,
+.row4 > * {
+  font-size: 1rem;
+  flex: 1;
+  border: 1px solid black;
+  border-radius: 2px;
 }
 
-.row1, .row2, .row3, .row4 {
-    display: flex;
-    gap: 0.15em;
-    margin: 0.1em;
-    flex: 1;
+.row1,
+.row2,
+.row3,
+.row4 {
+  display: flex;
+  gap: 0.15em;
+  margin: 0.1em;
+  flex: 1;
 }
 
-#seven, #eight, #nine, #clear, #del, #four, #five, #six, #plus, #minus, #one, #two,
-#three, #multiply, #division, #zero, #decimal, #equals {
-    box-shadow: -2px 2px black inset;
+#seven,
+#eight,
+#nine,
+#clear,
+#del,
+#four,
+#five,
+#six,
+#plus,
+#minus,
+#one,
+#two,
+#three,
+#multiply,
+#division,
+#zero,
+#decimal,
+#equals {
+  box-shadow: -2px 2px black inset;
 }
 
-#seven:hover, #eight:hover, #nine:hover, #clear:hover, #del:hover, #four:hover,
-#five:hover, #six:hover, #plus:hover, #minus:hover, #one:hover, #two:hover,
-#three:hover, #multiply:hover, #division:hover, #zero:hover, #decimal:hover,
+#seven:hover,
+#eight:hover,
+#nine:hover,
+#clear:hover,
+#del:hover,
+#four:hover,
+#five:hover,
+#six:hover,
+#plus:hover,
+#minus:hover,
+#one:hover,
+#two:hover,
+#three:hover,
+#multiply:hover,
+#division:hover,
+#zero:hover,
+#decimal:hover,
 #equals:hover {
-    background-color: var(--hoverColor);
+  background-color: var(--hoverColor);
 }
 
 .screen {
-    height: 21%;
-    width: 95%;
-    background-color: var(--screenColor);
-    border-radius: 4px;
-    margin: 0.4em;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    border: 1px solid black;
-    font-family: 'Orbitron', sans-serif;
+  height: 21%;
+  width: 95%;
+  background-color: var(--screenColor);
+  border-radius: 4px;
+  margin: 0.4em;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  border: 1px solid black;
+  font-family: "Orbitron", sans-serif;
 }
 
 #numbers {
-    font-size: 4vh;
-    padding: 0 0.5em;
+  font-size: 4vh;
+  padding: 0 0.5em;
 }
 
 #memory {
-    font-size: 3vh;
-    align-self: flex-end;
-    padding: 0 0.75em;
+  font-size: 3vh;
+  align-self: flex-end;
+  padding: 0 0.75em;
 }
 
 .icons {
-    font-size: 3vh;
-    padding: 0 1em;
-    display: flex;
+  font-size: 3vh;
+  padding: 0 1em;
+  display: flex;
 }
 
-#clear, #del, #plus,#minus, #multiply, #division, #equals {
-    background-color: var(--operatorButtons);
+#clear,
+#del,
+#plus,
+#minus,
+#multiply,
+#division,
+#equals {
+  background-color: var(--operatorButtons);
 }
 
-#seven, #eight, #nine, #four, #five, #six, #one, #two, #three, #zero, #decimal {
-    background-color: var(--numberButtons);
+#seven,
+#eight,
+#nine,
+#four,
+#five,
+#six,
+#one,
+#two,
+#three,
+#zero,
+#decimal {
+  background-color: var(--numberButtons);
 }
 
-#iconplus, #iconminus, #icondivide, #iconmultiply {
-    opacity: 0;  
+#iconplus,
+#iconminus,
+#icondivide,
+#iconmultiply {
+  opacity: 0;
 }
 
-#iconplus.active, #iconminus.active, #icondivide.active, #iconmultiply.active {
-    opacity: 1;
+#iconplus.active,
+#iconminus.active,
+#icondivide.active,
+#iconmultiply.active {
+  opacity: 1;
 }
 
 #equals {
-    flex: 1 1 40%;
+  flex: 1 1 40%;
 }
 
-#zero, #decimal {
-    flex: 1 1 30%;
+#zero,
+#decimal {
+  flex: 1 1 30%;
 }
 
 .footer {
-    display: flex;
-    justify-content: center;
-    font-size: 1rem;
-    font-family: 'Orbitron', sans-serif;
-    margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  font-family: "Orbitron", sans-serif;
+  margin-top: 2rem;
 }
 
 .signature {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
+/* signature background effect */
+
 .signature::after {
-    content: '';
-    position: absolute;
-    top: -0.25rem;
-    left: -1rem;
-    bottom: 0;
-    width: 100%;
-    background-image: var(--gradient);
-    z-index: -1;
-    padding: 1rem;
-    border-radius: 4px;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 300ms ease-in;
+  content: "";
+  position: absolute;
+  top: -0.25rem;
+  left: -1rem;
+  bottom: 0;
+  width: 100%;
+  background-image: var(--gradient);
+  z-index: -1;
+  padding: 1rem;
+  border-radius: 2px;
+  transform: scaleX(0) skewx(-45deg);
+  transform-origin: right;
+  transition: transform 200ms ease-out;
 }
 
 .signature:hover::after {
-    transform: scaleX(1);
-    transform-origin: left;
+  transform: scaleX(1) skewx(-45deg);
+  transform-origin: left;
 }
