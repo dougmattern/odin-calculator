@@ -1,5 +1,6 @@
 # Simple Calculator
 This was made as part of The Odin Project.
+https://dougmattern.github.io/odin-calculator/
 
 ## Math Functions
 This calculator can add, subtract, multiply, and divide.
