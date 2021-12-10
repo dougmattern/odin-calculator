@@ -220,6 +220,7 @@ function clearNumber() {
 // check if number in memory and store it or calculate pair and store it
 
 function preOperate() {
+  removeIcon();
   if (numberMemory != "0") {
     numberDisplay = parseFloat(numberDisplay);
     numberMemory = operate(numberDisplay, numberMemory, currentOperator);
@@ -234,22 +235,19 @@ function preOperate() {
 // operator icon display and reset
 
 function setOperator(operator) {
+  removeIcon();
   activateIcon(operator);
   currentOperator = operator;
 }
 
-function activateIcon(operator) {
-  if (currentOperator == "addition") {
-    iconplus.classList.remove("active");
-  } else if (currentOperator == "subtraction") {
-    iconminus.classList.remove("active");
-  } else if (currentOperator == "multiply") {
-    iconmultiply.classList.remove("active");
-  } else if (currentOperator == "division") {
-    icondivide.classList.remove("active");
-  } else {
-  }
+function removeIcon(){
+  iconplus.classList.remove("active");
+  iconminus.classList.remove("active");
+  iconmultiply.classList.remove("active");
+  icondivide.classList.remove("active");
+}
 
+function activateIcon(operator) {
   if (operator == "addition") {
     iconplus.classList.add("active");
   } else if (operator == "subtraction") {
