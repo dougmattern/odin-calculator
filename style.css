@@ -206,16 +206,6 @@ input:checked + .slider {
   margin: 0.5em;
 }
 
-.row1 > *,
-.row2 > *,
-.row3 > *,
-.row4 > * {
-  font-size: 1rem;
-  flex: 1;
-  border: 1px solid black;
-  border-radius: 2px;
-}
-
 .row1,
 .row2,
 .row3,
@@ -226,45 +216,32 @@ input:checked + .slider {
   flex: 1;
 }
 
-#seven,
-#eight,
-#nine,
-#clear,
-#del,
-#four,
-#five,
-#six,
-#plus,
-#minus,
-#one,
-#two,
-#three,
-#multiply,
-#division,
-#zero,
-#decimal,
-#equals {
-  box-shadow: -2px 2px black inset;
+.btn {
+  font-size: 1rem;
+  flex: 1;
+  border: 1px solid black;
+  border-radius: 2px;
+  box-shadow: -2px -2px black inset;
 }
 
-#seven:hover,
-#eight:hover,
-#nine:hover,
-#clear:hover,
-#del:hover,
-#four:hover,
-#five:hover,
-#six:hover,
-#plus:hover,
-#minus:hover,
-#one:hover,
-#two:hover,
-#three:hover,
-#multiply:hover,
-#division:hover,
-#zero:hover,
-#decimal:hover,
-#equals:hover {
+#equals {
+  flex: 1 1 40%;
+}
+
+#zero,
+#decimal {
+  flex: 1 1 30%;
+}
+
+.btn.op{
+  background-color: var(--operatorButtons);
+}
+
+.btn.num{
+  background-color: var(--numberButtons);
+}
+
+.btn:hover {
   background-color: var(--hoverColor);
 }
 
@@ -300,51 +277,12 @@ input:checked + .slider {
   display: flex;
 }
 
-#clear,
-#del,
-#plus,
-#minus,
-#multiply,
-#division,
-#equals {
-  background-color: var(--operatorButtons);
-}
-
-#seven,
-#eight,
-#nine,
-#four,
-#five,
-#six,
-#one,
-#two,
-#three,
-#zero,
-#decimal {
-  background-color: var(--numberButtons);
-}
-
-#iconplus,
-#iconminus,
-#icondivide,
-#iconmultiply {
+.icon {
   opacity: 0;
 }
 
-#iconplus.active,
-#iconminus.active,
-#icondivide.active,
-#iconmultiply.active {
+.icon.active {
   opacity: 1;
-}
-
-#equals {
-  flex: 1 1 40%;
-}
-
-#zero,
-#decimal {
-  flex: 1 1 30%;
 }
 
 .footer {
