@@ -31,7 +31,7 @@ let newNumber = "0";
 
 // dark mode
 
-const themeSwitch = document.querySelector("input");
+const themeSwitch = document.getElementById("input");
 
 themeSwitch.addEventListener("change", () => {
   document.body.classList.toggle("dark-theme");
